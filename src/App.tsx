@@ -1,16 +1,17 @@
-import React from 'react';
+import React from "react";
 import MainPage from "./pages/Main/ui/MainPage";
 
 // @ts-ignore
-const tg = window.Telegram.WebApp
+const tg = window.Telegram.WebApp;
 
-console.log(tg)
+tg.expand();
+
 const App = () => {
   return (
     <div className="App">
-      <MainPage/>
+      <MainPage />
     </div>
   );
-}
+};
 
 export default App;
