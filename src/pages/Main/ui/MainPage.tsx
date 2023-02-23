@@ -1,6 +1,7 @@
-import s from "../styles/MainPage.module.scss";
-import { ReactComponent as Logo } from "../../../assets/logo.svg";
 import { MainPageTop } from "widgets/MainPageTop";
+import { ProductsGallery } from "widgets/ProductsGallery";
+
+import s from "../styles/MainPage.module.scss";
 
 const MainPage = () => {
   return (
@@ -9,7 +10,9 @@ const MainPage = () => {
         <MainPageTop />
       </section>
       <nav className={s.mainPage__nav}></nav>
-      <main className={s.mainPage__main}></main>
+      <main className={s.mainPage__main}>
+        <ProductsGallery />
+      </main>
     </div>
   );
 };
