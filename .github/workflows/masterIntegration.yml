@@ -1,0 +1,39 @@
+name: Merge New Branch to Master
+on:
+  pull_request:
+    type: [opened, edited, reopened]
+jobs:
+  ESLint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v3
+      - name: Cache deps
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+      - name: Install dependencies
+        run: npm ci --prefer-offline --cache=./.npm
+      - name: Lint application
+        run: npm run lint
+  Build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get repository code
+        uses: actions/checkout@v3
+      - name: Cache deps
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-
+      - name: Install dependencies
+        run: npm ci --prefer-offline --cache=./.npm
+      - name: Build application
+        run: npm run build
+      - name: Build
+        run: echo Building...
