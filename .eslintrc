@@ -1,0 +1,31 @@
+{
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "prettier"
+  ],
+  "plugins": [
+    "sort-keys-fix",
+    "unused-imports"
+  ],
+  "rules": {
+    "no-console": "warn",
+    "prefer-const": "warn",
+    "quotes": ["warn", "double"],
+    "semi": ["warn" , "always"],
+    "react-hooks/exhaustive-deps": "off",
+    "import/order" : [
+      "warn",
+      {
+        "groups" :  ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
+        "newlines-between": "always-and-inside-groups"
+      }
+    ],
+    "import/no-cycle": "error",
+    "import/no-useless-path-segments": ["error", {
+      "noUselessIndex": true
+    }],
+    "unused-imports/no-unused-imports": "warn",
+    "sort-keys-fix/sort-keys-fix": "warn"
+  }
+}

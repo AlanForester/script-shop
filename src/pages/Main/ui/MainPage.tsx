@@ -1,1 +1,0 @@
-import s from '../styles/MainPage.module.scss'const MainPage = () => {    return (        <div className={s.mainPage}>MainPage</div>    );}export default MainPage;
