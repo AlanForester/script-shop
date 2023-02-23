@@ -10,7 +10,7 @@ type ProductCardProps = {
 const ProductCard = ({ url, title, price }: ProductCardProps) => {
   return (
     <article className={s.productCard}>
-      <img src={url} className={s.productCard__img} />
+      <img src={url} className={s.productCard__img} alt={`Product ${title}`} />
       <h3 className={s.productCard__title}>{title}</h3>
       <div className={s.productCard__payRow}>
         <div className={s.productCard__priceWrapper}>
