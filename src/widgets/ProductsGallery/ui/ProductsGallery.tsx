@@ -4,16 +4,19 @@ import { PRODUCTS_DATA_MOCK } from "../MOCK";
 
 const ProductsGallery = () => {
   return (
-    <div className={s.productsGallery}>
-      {PRODUCTS_DATA_MOCK.map(({ price, title, url }) => (
-        <ProductCard
-          key={Math.random()}
-          title={title}
-          price={price}
-          url={url}
-        />
-      ))}
-    </div>
+    <>
+      <div className={s.top}></div>
+      <div className={s.productsGallery}>
+        {PRODUCTS_DATA_MOCK.map(({ price, title, url }) => (
+          <ProductCard
+            key={Math.random()}
+            title={title}
+            price={price}
+            url={url}
+          />
+        ))}
+      </div>
+    </>
   );
 };
 

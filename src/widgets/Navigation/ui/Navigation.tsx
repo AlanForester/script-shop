@@ -1,7 +1,6 @@
-import { NavLink, NavLinkProps } from "react-router-dom";
+import { NavLinkProps } from "react-router-dom";
 
 import s from "../styles/Navigation.module.scss";
-import { ROUTES } from "../../../shared/lib/constants/routes";
 
 const Navigation = () => {
   const getLinkClassname: NavLinkProps["className"] = ({ isActive }) => {
@@ -10,18 +9,19 @@ const Navigation = () => {
 
   return (
     <nav className={s.navigation}>
-      <NavLink to={ROUTES.PRODUCTS} className={getLinkClassname}>
-        Products
-      </NavLink>
-      <NavLink to={ROUTES.OFFERS} className={getLinkClassname}>
-        Hot Offers
-      </NavLink>
-      <NavLink to={ROUTES.ABOUT} className={getLinkClassname}>
-        About Us
-      </NavLink>
-      <NavLink to={ROUTES.CONTACTS} className={getLinkClassname}>
-        Contacts
-      </NavLink>
+      nav
+      {/*<NavLink to={ROUTES.PRODUCTS} className={getLinkClassname}>*/}
+      {/*  Products*/}
+      {/*</NavLink>*/}
+      {/*<NavLink to={ROUTES.OFFERS} className={getLinkClassname}>*/}
+      {/*  Hot Offers*/}
+      {/*</NavLink>*/}
+      {/*<NavLink to={ROUTES.ABOUT} className={getLinkClassname}>*/}
+      {/*  About Us*/}
+      {/*</NavLink>*/}
+      {/*<NavLink to={ROUTES.CONTACTS} className={getLinkClassname}>*/}
+      {/*  Contacts*/}
+      {/*</NavLink>*/}
     </nav>
   );
 };

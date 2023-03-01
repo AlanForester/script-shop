@@ -1,0 +1,51 @@
+.burger {
+  cursor: pointer;
+  height: 65%;
+  aspect-ratio: 1 / 0.8;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  &__firstPlate, &__secondPlate, &__thirdPlate {
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: #1C161E;
+    border-radius: 2px;
+  }
+
+  &__firstPlate {
+  top: 0;
+  left: 0;
+}
+  &__secondPlate {
+  top: 50%;
+  left: 0;
+    transform: translateY(-50%);
+}
+  &__thirdPlate {
+  bottom: 0;
+  left: 0;
+}
+  &_closed {
+    transform: translateY(-10%);
+
+  }
+  &_closed &__secondPlate{
+      display: none;
+  }
+  &_closed &__firstPlate{
+    top: 50%;
+    transform: rotate(-45deg) ;
+    transition: .5s rotate;
+  }
+  &_closed &__thirdPlate{
+    top: 50%;
+    transform: rotate(45deg) ;
+    transition: .5s rotate;
+  }
+}
+
+
+
