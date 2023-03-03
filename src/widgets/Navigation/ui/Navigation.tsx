@@ -1,11 +1,9 @@
-import { NavLinkProps } from "react-router-dom";
-
 import s from "../styles/Navigation.module.scss";
 
 const Navigation = () => {
-  const getLinkClassname: NavLinkProps["className"] = ({ isActive }) => {
-    return isActive ? s.navigation__link_active : s.navigation__link;
-  };
+  // const getLinkClassname: NavLinkProps["className"] = ({ isActive }) => {
+  //   return isActive ? s.navigation__link_active : s.navigation__link;
+  // };
 
   return (
     <nav className={s.navigation}>
