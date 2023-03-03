@@ -1,4 +1,4 @@
-import productMock from "../../assets/ITEM_MOCK_IMG.jpg";
+import productMock from "../../assets/PRODUCT_MOCK.jpeg";
 
 export const PRODUCTS_DATA_MOCK = [
   {
