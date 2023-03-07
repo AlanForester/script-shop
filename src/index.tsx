@@ -17,7 +17,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={setupStore()}>
-      <BrowserRouter>
+      <BrowserRouter basename="/shop">
         <App />
       </BrowserRouter>
     </Provider>
