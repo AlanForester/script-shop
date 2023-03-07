@@ -55,5 +55,6 @@
     "normalize.css": "^8.0.1",
     "prettier": "^2.8.0",
     "sass": "^1.58.3"
-  }
+  },
+  "homepage": "."
 }
