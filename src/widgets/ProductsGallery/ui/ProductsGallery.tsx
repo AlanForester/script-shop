@@ -1,12 +1,11 @@
+import React from "react";
+
 import s from "../styles/ProductsGallery.module.scss";
 import { ProductCard } from "../../../entities/ProductCard";
 import { productsAPI } from "../../../app/store/products/service";
 
-// const userId = "6401c5b3b6f14c86085ddf55";
-
-const ProductsGallery = () => {
-  const { data } = productsAPI.useGetAllProductsQuery("");
-
+const ProductsGallery = ({ userId }: { userId: string | null }) => {
+  const { data } = productsAPI.useGetAllProductsQuery(userId ?? "");
   return (
     <>
       <div className={s.productsGallery}>
