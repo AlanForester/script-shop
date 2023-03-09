@@ -8,8 +8,8 @@ export const productsAPI = createApi({
   }),
   endpoints: (builder) => ({
     getAllProducts: builder.query<Array<Product>, string>({
-      query: (number) => ({
-        params: { userId: "6401c5b3b6f14c86085ddf55" },
+      query: (userId) => ({
+        params: { userId },
         url: "product/getAll",
       }),
     }),
