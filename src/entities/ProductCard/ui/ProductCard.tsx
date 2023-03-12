@@ -4,6 +4,8 @@ import s from "../styles/ProductCard.module.scss";
 import { ReactComponent as ShopBasket } from "../assets/shopBasket.svg";
 import { ROUTES } from "../../../shared/lib/constants/routes";
 import { IProduct } from "../../../shared/types";
+import { useAppDispatch } from "../../../app/store/hooks/hooks";
+import { increment } from "../../../app/store/basket/slice";
 
 type ProductCardProps = {
   product: IProduct;
@@ -11,9 +13,16 @@ type ProductCardProps = {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const { pictures, title, price, id, discount } = product;
+  const dispatch = useAppDispatch();
+
   const pictureUrls = pictures.map(
     (picture) => `${process.env.REACT_APP_API_URL}/${picture}`
   );
+
+  const handleBuyProduct = () => {
+    dispatch(increment());
+  };
+
   return (
     <article className={s.productCard}>
       {!!discount && (
@@ -40,9 +49,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
         <div className={s.divider}></div>
         <div className={s.productCard__footerWrapper}>
           <p className={s.productCard__price}>{`${price}$`}</p>
-          <div className={s.productCard__shopBasket}>
+          <button
+            className={s.productCard__shopBasketBtn}
+            onClick={handleBuyProduct}
+          >
             <ShopBasket />
-          </div>
+          </button>
         </div>
       </div>
     </article>

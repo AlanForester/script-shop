@@ -17,7 +17,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={setupStore()}>
-      <BrowserRouter>
+      <BrowserRouter
+        basename={process.env.REACT_APP_STAGE === "DEV" ? "/" : "/shop"}
+      >
         <App />
       </BrowserRouter>
     </Provider>
