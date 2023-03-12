@@ -6,15 +6,14 @@ import { ROUTES } from "./shared/lib/constants/routes";
 import { MainLayout } from "./layouts/MainLayout";
 import { ProductsGallery } from "./pages/ProductsGallery";
 import { Product } from "./pages/Product";
-
-// @ts-ignore
-const tg = window.Telegram.WebApp;
-
-tg.expand();
+import { useTelegram } from "./shared/lib/hooks";
+import Orders from "./pages/Orders/ui/Orders";
 
 const App = () => {
   const userIdParam = new URLSearchParams(window.location.search).get("userId");
   const userId = useRef(userIdParam);
+  const { expandApp } = useTelegram();
+  expandApp();
 
   return (
     <Routes>
@@ -24,6 +23,7 @@ const App = () => {
           element={<ProductsGallery userId={userId.current} />}
         />
         <Route path={ROUTES.PRODUCT} element={<Product />} />
+        <Route path={ROUTES.ORDERS} element={<Orders />} />
         <Route path="*" element={<Navigate to={ROUTES.PRODUCTS} replace />} />
       </Route>
     </Routes>

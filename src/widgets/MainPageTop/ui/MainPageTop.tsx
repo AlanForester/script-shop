@@ -1,16 +1,17 @@
 import s from "../styles/MainPageTop.module.scss";
 import { ReactComponent as Logo } from "../../../assets/logo.svg";
+import { Basket } from "../../../shared/ui/Basket";
+import { useAppSelector } from "../../../app/store/hooks/hooks";
+import { RootState } from "../../../app/store/store";
 
 const MainPageTop = () => {
+  const { value } = useAppSelector((state: RootState) => state.basketReducer);
   return (
     <header className={s.mainPageTop}>
-      {/*<Burger />*/}
-      <div className={s.mainPageTop__centerWrapper}>
-        <Logo className={s.mainPageTop__logo} />
+      <Logo className={s.mainPageTop__logo} />
+      <div className={s.mainPageTop__basketWrapper}>
+        <Basket ordersAmount={value} />
       </div>
-      {/*<div*/}
-      {/*  style={{ border: "1px dotted blue", height: "40px", width: "40px" }}*/}
-      {/*></div>*/}
     </header>
   );
 };
