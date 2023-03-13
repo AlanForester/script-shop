@@ -21,6 +21,7 @@ const ProductsGallery = ({ userId }: { userId: string | null }) => {
 
   const handleClickMainButton = () => {
     navigate(ROUTES.ORDERS);
+    hideMainButton();
   };
 
   const { showMainButton, hideMainButton } = mainButton({

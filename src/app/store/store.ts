@@ -3,10 +3,12 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import productReducer from "./products/slice";
 import { productsAPI } from "./products/service";
 import basketReducer from "./basket/slice";
+import uiReducer from "./ui/slice";
 
 const rootReducer = combineReducers({
   basketReducer,
   productReducer,
+  uiReducer,
   [productsAPI.reducerPath]: productsAPI.reducer,
 });
 
