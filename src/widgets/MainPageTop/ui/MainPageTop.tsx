@@ -9,7 +9,9 @@ import { ReactComponent as Arrow } from "../../../assets/arrow.svg";
 import { hideBackArrow } from "../../../app/store/ui/slice";
 
 const MainPageTop = () => {
-  const { value } = useAppSelector((state: RootState) => state.basketReducer);
+  const { totalProductsInBasket } = useAppSelector(
+    (state: RootState) => state.basketReducer
+  );
   const dispatch = useAppDispatch();
   const { isVisible, goTo } = useAppSelector(
     (state: RootState) => state.uiReducer.backArrow
@@ -33,7 +35,7 @@ const MainPageTop = () => {
       </Link>
       <Logo className={s.mainPageTop__logo} />
       <div className={s.mainPageTop__basketWrapper}>
-        <Basket ordersAmount={value} />
+        <Basket ordersAmount={totalProductsInBasket} />
       </div>
     </header>
   );

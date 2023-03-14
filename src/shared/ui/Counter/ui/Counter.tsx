@@ -6,14 +6,18 @@ type CounterProps = {
   value: number;
 };
 
-const Counter = ({ onIncrement, onDecrement, value }: any) => {
+const Counter = ({ onIncrement, onDecrement, value }: CounterProps) => {
   return (
     <div className={s.counter}>
-      <button className={s.counter__btn}>-</button>
+      <button className={s.counter__btn} onClick={onDecrement}>
+        -
+      </button>
       <div className={s.counter__val}>
-        <span>0</span>
+        <span>{value}</span>
       </div>
-      <button className={s.counter__btn}>+</button>
+      <button className={s.counter__btn} onClick={onIncrement}>
+        +
+      </button>
     </div>
   );
 };
