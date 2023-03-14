@@ -15,12 +15,15 @@ const USER_ID_MOCK = "6401c5b3b6f14c86085ddf55";
 
 const ProductsGallery = ({ userId }: { userId: string | null }) => {
   const { data } = productsAPI.useGetAllProductsQuery(USER_ID_MOCK ?? "");
-  const { value } = useAppSelector((state: RootState) => state.basketReducer);
+  const { totalProductsInBasket } = useAppSelector(
+    (state: RootState) => state.basketReducer
+  );
   const { mainButton } = useTelegram();
   const navigate = useNavigate();
 
   const handleClickMainButton = () => {
     navigate(ROUTES.ORDERS);
+    hideMainButton();
   };
 
   const { showMainButton, hideMainButton } = mainButton({
@@ -28,18 +31,25 @@ const ProductsGallery = ({ userId }: { userId: string | null }) => {
     text: "View orders",
   });
 
+  const test = data?.map((product) => {
+    const mapped = product.pictures.map(
+      (pictureUrl) => `${process.env.REACT_APP_API_URL}/${pictureUrl}`
+    );
+    return { ...product, pictures: mapped };
+  });
+
   useEffect(() => {
-    if (value) {
+    if (totalProductsInBasket) {
       showMainButton();
     } else {
       hideMainButton();
     }
-  }, [value]);
+  }, [totalProductsInBasket]);
 
   return (
     <>
       <div className={s.productsGallery}>
-        {data?.map((product) => {
+        {test?.map((product) => {
           return <ProductCard key={product.id} product={product} />;
         })}
       </div>

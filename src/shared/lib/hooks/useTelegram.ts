@@ -12,6 +12,15 @@ type MainButton = (params: MainButtonParams) => {
   hideMainButton: () => void;
 };
 
+type PopupParams = {
+  message: string;
+  title: string;
+};
+
+type Popup = (params: PopupParams) => {
+  showPopup: () => void;
+};
+
 const useTelegram = () => {
   const expandApp = () => {
     tg.expand();
@@ -30,7 +39,15 @@ const useTelegram = () => {
     return { hideMainButton, showMainButton };
   };
 
-  return { expandApp, mainButton };
+  const popup: Popup = ({ message, title }) => {
+    const showPopup = () => {
+      tg.showPopup({ message, title });
+    };
+
+    return { showPopup };
+  };
+
+  return { expandApp, mainButton, popup };
 };
 
 export default useTelegram;

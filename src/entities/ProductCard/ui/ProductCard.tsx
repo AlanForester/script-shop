@@ -4,24 +4,22 @@ import s from "../styles/ProductCard.module.scss";
 import { ReactComponent as ShopBasket } from "../assets/shopBasket.svg";
 import { ROUTES } from "../../../shared/lib/constants/routes";
 import { IProduct } from "../../../shared/types";
-import { useAppDispatch } from "../../../app/store/hooks/hooks";
-import { increment } from "../../../app/store/basket/slice";
+
+import { Counter } from "../../../shared/ui/Counter";
+import { useProductBasket } from "../../../shared/lib/hooks";
 
 type ProductCardProps = {
   product: IProduct;
 };
 
 const ProductCard = ({ product }: ProductCardProps) => {
-  const { pictures, title, price, id, discount } = product;
-  const dispatch = useAppDispatch();
+  const { title, price, id, discount } = product;
 
-  const pictureUrls = pictures.map(
-    (picture) => `${process.env.REACT_APP_API_URL}/${picture}`
-  );
-
-  const handleBuyProduct = () => {
-    dispatch(increment());
-  };
+  const {
+    amountOfProductInBasket,
+    handleAddProductToBasket,
+    handleRemoveProductFromBasket,
+  } = useProductBasket({ product });
 
   return (
     <article className={s.productCard}>
@@ -31,12 +29,9 @@ const ProductCard = ({ product }: ProductCardProps) => {
         </div>
       )}
       <div className={s.productCard__imgWrapper}>
-        <Link
-          to={`${ROUTES.PRODUCTS}/${id}`}
-          state={{ ...product, pictures: pictureUrls }}
-        >
+        <Link to={`${ROUTES.PRODUCTS}/${id}`} state={product}>
           <img
-            src={pictureUrls[0]}
+            src={product.pictures[0]}
             className={s.productCard__img}
             alt={`Product ${title}`}
           />
@@ -49,12 +44,20 @@ const ProductCard = ({ product }: ProductCardProps) => {
         <div className={s.divider}></div>
         <div className={s.productCard__footerWrapper}>
           <p className={s.productCard__price}>{`${price}$`}</p>
-          <button
-            className={s.productCard__shopBasketBtn}
-            onClick={handleBuyProduct}
-          >
-            <ShopBasket />
-          </button>
+          {amountOfProductInBasket ? (
+            <Counter
+              value={amountOfProductInBasket}
+              onIncrement={handleAddProductToBasket}
+              onDecrement={handleRemoveProductFromBasket}
+            />
+          ) : (
+            <button
+              className={s.productCard__shopBasketBtn}
+              onClick={handleAddProductToBasket}
+            >
+              <ShopBasket />
+            </button>
+          )}
         </div>
       </div>
     </article>
