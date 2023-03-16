@@ -47,7 +47,10 @@ const useTelegram = () => {
     return { showPopup };
   };
 
-  return { expandApp, mainButton, popup };
+  const getUserData = () => {
+    return tg.initDataUnsafe.user.first_name;
+  };
+  return { expandApp, getUserData, mainButton, popup };
 };
 
 export default useTelegram;

@@ -18,10 +18,7 @@ const App = () => {
   return (
     <Routes>
       <Route element={<MainLayout />}>
-        <Route
-          path={ROUTES.PRODUCTS}
-          element={<ProductsGallery userId={userId.current} />}
-        />
+        <Route path={ROUTES.PRODUCTS} element={<ProductsGallery />} />
         <Route path={ROUTES.PRODUCT} element={<Product />} />
         <Route path={ROUTES.ORDERS} element={<Orders />} />
         <Route path="*" element={<Navigate to={ROUTES.PRODUCTS} replace />} />

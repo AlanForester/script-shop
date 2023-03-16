@@ -9,6 +9,7 @@ RUN npm ci --silent
 COPY . .
 
 ENV REACT_APP_API_URL=https://niksemenov.ru
+#ENV REACT_APP_STAGE=PROD
 
 RUN npm run build
 
