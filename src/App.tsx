@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 
 import { Navigate, Route, Routes } from "react-router-dom";
 
@@ -10,8 +10,8 @@ import { useTelegram } from "./shared/lib/hooks";
 import Orders from "./pages/Orders/ui/Orders";
 
 const App = () => {
-  const userIdParam = new URLSearchParams(window.location.search).get("userId");
-  const userId = useRef(userIdParam);
+  // const userIdParam = new URLSearchParams(window.location.search).get("userId");
+  // const userId = useRef(userIdParam);
   const { expandApp } = useTelegram();
   expandApp();
 

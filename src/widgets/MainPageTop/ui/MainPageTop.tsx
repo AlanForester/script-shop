@@ -17,7 +17,7 @@ const MainPageTop = () => {
     (state: RootState) => state.basketReducer
   );
   const dispatch = useAppDispatch();
-  const { isVisible, goTo } = useAppSelector(
+  const { isVisible } = useAppSelector(
     (state: RootState) => state.uiReducer.backArrow
   );
 

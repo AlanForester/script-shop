@@ -11,10 +11,10 @@ import { RootState } from "../../../app/store/store";
 import { useTelegram } from "../../../shared/lib/hooks";
 import { ROUTES } from "../../../shared/lib/constants/routes";
 
-const userId =
-  process.env.REACT_APP_STAGE === "DEV"
-    ? "6401c5b3b6f14c86085ddf55"
-    : "6401be7c6a607f6f5ad28743";
+// const userId =
+//   process.env.REACT_APP_STAGE === "DEV"
+//     ? "6401c5b3b6f14c86085ddf55"
+//     : "6401be7c6a607f6f5ad28743";
 
 const ProductsGallery = () => {
   const { data } = productsAPI.useGetAllProductsQuery(
