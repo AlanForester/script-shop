@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -10,11 +10,13 @@ import { useEffect } from "react";
 
 import s from "../styles/Product.module.scss";
 import { IProduct } from "../../../shared/types";
-import { ReactComponent as Arrow } from "../../../assets/arrow.svg";
 import { ROUTES } from "../../../shared/lib/constants/routes";
 import { useProductBasket, useTelegram } from "../../../shared/lib/hooks";
+import { showBackArrow } from "../../../app/store/ui/slice";
+import { useAppDispatch } from "../../../app/store/hooks/hooks";
 
 const Product = () => {
+  const dispatch = useAppDispatch();
   const { state }: { state: IProduct } = useLocation();
   const { title, description, price } = state;
   const { handleAddProductToBasket, amountOfProductInBasket } =
@@ -38,12 +40,14 @@ const Product = () => {
     }
   }, [amountOfProductInBasket]);
 
+  useEffect(() => {
+    dispatch(showBackArrow({ goTo: ROUTES.PRODUCTS }));
+    showMainButton();
+  }, []);
+
   return (
     <div className={s.product}>
       <section className={s.product__galleryWrapper}>
-        <Link className={s.product__back} to={ROUTES.PRODUCTS}>
-          <Arrow />
-        </Link>
         <div className={s.gallery}>
           <Swiper
             style={{ height: "100%" }}

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 
 import { Navigate, Route, Routes } from "react-router-dom";
 
@@ -10,18 +10,15 @@ import { useTelegram } from "./shared/lib/hooks";
 import Orders from "./pages/Orders/ui/Orders";
 
 const App = () => {
-  const userIdParam = new URLSearchParams(window.location.search).get("userId");
-  const userId = useRef(userIdParam);
+  // const userIdParam = new URLSearchParams(window.location.search).get("userId");
+  // const userId = useRef(userIdParam);
   const { expandApp } = useTelegram();
   expandApp();
 
   return (
     <Routes>
       <Route element={<MainLayout />}>
-        <Route
-          path={ROUTES.PRODUCTS}
-          element={<ProductsGallery userId={userId.current} />}
-        />
+        <Route path={ROUTES.PRODUCTS} element={<ProductsGallery />} />
         <Route path={ROUTES.PRODUCT} element={<Product />} />
         <Route path={ROUTES.ORDERS} element={<Orders />} />
         <Route path="*" element={<Navigate to={ROUTES.PRODUCTS} replace />} />

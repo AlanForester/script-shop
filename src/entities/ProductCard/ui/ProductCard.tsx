@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 
 import s from "../styles/ProductCard.module.scss";
-import { ReactComponent as ShopBasket } from "../assets/shopBasket.svg";
 import { ROUTES } from "../../../shared/lib/constants/routes";
 import { IProduct } from "../../../shared/types";
-
-import { Counter } from "../../../shared/ui/Counter";
+import { ReactComponent as ShopBasket } from "../../../shared/lib/assets/BasketSvg.svg";
 import { useProductBasket } from "../../../shared/lib/hooks";
+import { Counter } from "../../../shared/ui/Counter";
 
 type ProductCardProps = {
   product: IProduct;
@@ -36,14 +35,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
             alt={`Product ${title}`}
           />
         </Link>
-      </div>
-      <div className={s.productCard__bottomWrapper}>
-        <div className={s.productCard__titleWrapper}>
-          <h3 className={s.productCard__title}>{title}</h3>
-        </div>
-        <div className={s.divider}></div>
-        <div className={s.productCard__footerWrapper}>
-          <p className={s.productCard__price}>{`${price}$`}</p>
+        <div className={s.productCard__basketWrapper}>
           {amountOfProductInBasket ? (
             <Counter
               value={amountOfProductInBasket}
@@ -58,6 +50,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
               <ShopBasket />
             </button>
           )}
+        </div>
+      </div>
+      <div className={s.productCard__bottomWrapper}>
+        <h3 className={s.productCard__title}>{title}</h3>
+        <div className={s.productCard__priceWrapper}>
+          <p className={s.productCard__price}>{`${price}$`}</p>
         </div>
       </div>
     </article>

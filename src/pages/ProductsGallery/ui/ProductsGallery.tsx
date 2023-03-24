@@ -11,10 +11,15 @@ import { RootState } from "../../../app/store/store";
 import { useTelegram } from "../../../shared/lib/hooks";
 import { ROUTES } from "../../../shared/lib/constants/routes";
 
-const USER_ID_MOCK = "6401c5b3b6f14c86085ddf55";
+// const userId =
+//   process.env.REACT_APP_STAGE === "DEV"
+//     ? "6401c5b3b6f14c86085ddf55"
+//     : "6401be7c6a607f6f5ad28743";
 
-const ProductsGallery = ({ userId }: { userId: string | null }) => {
-  const { data } = productsAPI.useGetAllProductsQuery(USER_ID_MOCK ?? "");
+const ProductsGallery = () => {
+  const { data } = productsAPI.useGetAllProductsQuery(
+    "6401be7c6a607f6f5ad28743"
+  );
   const { totalProductsInBasket } = useAppSelector(
     (state: RootState) => state.basketReducer
   );
@@ -47,13 +52,15 @@ const ProductsGallery = ({ userId }: { userId: string | null }) => {
   }, [totalProductsInBasket]);
 
   return (
-    <>
-      <div className={s.productsGallery}>
+    <div className={s.productsGallery}>
+      <p className={s.productsGallery__subtitle}>Welcome</p>
+      <h1 className={s.productsGallery__title}>Script shop store!</h1>
+      <div className={s.productsGallery__products}>
         {test?.map((product) => {
           return <ProductCard key={product.id} product={product} />;
         })}
       </div>
-    </>
+    </div>
   );
 };
 

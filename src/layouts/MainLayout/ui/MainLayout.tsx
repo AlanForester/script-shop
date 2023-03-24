@@ -7,9 +7,6 @@ const MainLayout = () => {
   return (
     <>
       <div className={s.mainPage}>
-        {/*<section className={s.mainPage__nav}>*/}
-        {/*  <Navigation />*/}
-        {/*</section>*/}
         <section className={s.mainPage__top}>
           <MainPageTop />
         </section>
